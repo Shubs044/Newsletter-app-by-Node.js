@@ -41,7 +41,7 @@ app.post("/",function(req,res){
 
     const options = {
         method: "POST", 
-        auth: "shubs:"+api
+        auth: "shubs:b718a52307f1d0903460cec4f0172326-us21"
     }
 
 
