@@ -2,7 +2,7 @@ const express=require("express");
 const bodyParser=require("body-parser");
 const request=require("request");
 const https=require('node:https');
-
+const Secretapi=require('dotenv').config()
 const app=express();
 
 app.use(express.static("public"));
@@ -37,10 +37,13 @@ app.post("/",function(req,res){
 
     const url="https://us21.api.mailchimp.com/3.0/lists/3376dfe229";
 
+    const api=process.env.API_KEY
+
     const options = {
         method: "POST", 
-        auth: "shubs:b0dd0db53b6e288cf84ad6767ad06148-us21"
+        auth: "shubs:"+api
     }
+
 
     const request=https.request(url,options,function(response){
 
@@ -58,8 +61,7 @@ app.post("/",function(req,res){
     request.end();
 
 });
-// api key: b0dd0db53b6e288cf84ad6767ad06148-us21
-// list id: 3376dfe229. 3376dfe229
+
 
 app.post("/failure",function(req,res){
     res.redirect("/");
